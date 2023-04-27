@@ -1,0 +1,33 @@
+
+raw1 = read.table("rs9939224_ACTG.raw", header=T)
+raw2 = read.table("rs56156922_ACTG.raw", header=T)
+
+
+summary( lm(aspree$TC ~ raw1$rs9939224_T + A1_g$AgeAtRand + factor(A1_g$Gender) +factor(Statin_Use$V2) +V3+V4+V5+V6+V7+V8+V9+V10+V11+V12+V13+V14+V15+V16+V17+V18+V19+V20+V21+V22, data=PCA_12031) ) 
+
+summary( lm(aspree$HDL ~ raw1$rs9939224_T + A1_g$AgeAtRand + factor(A1_g$Gender) +factor(Statin_Use$V2) +V3+V4+V5+V6+V7+V8+V9+V10+V11+V12+V13+V14+V15+V16+V17+V18+V19+V20+V21+V22, data=PCA_12031) ) 
+
+summary( lm(aspree$LDL ~ raw1$rs9939224_T + A1_g$AgeAtRand + factor(A1_g$Gender) +factor(Statin_Use$V2) +V3+V4+V5+V6+V7+V8+V9+V10+V11+V12+V13+V14+V15+V16+V17+V18+V19+V20+V21+V22, data=PCA_12031) ) 
+
+summary( lm(aspree$nonHDL ~ raw1$rs9939224_T + A1_g$AgeAtRand + factor(A1_g$Gender) +factor(Statin_Use$V2) +V3+V4+V5+V6+V7+V8+V9+V10+V11+V12+V13+V14+V15+V16+V17+V18+V19+V20+V21+V22, data=PCA_12031) ) 
+
+############################################################
+
+summary( lm(aspree$TC ~ raw2$rs56156922_C + A1_g$AgeAtRand + factor(A1_g$Gender) +factor(Statin_Use$V2)+V3+V4+V5+V6+V7+V8+V9+V10+V11+V12+V13+V14+V15+V16+V17+V18+V19+V20+V21+V22, data=PCA_12031) ) 
+
+summary( lm(aspree$HDL ~ raw2$rs56156922_C + A1_g$AgeAtRand + factor(A1_g$Gender) +factor(Statin_Use$V2)+V3+V4+V5+V6+V7+V8+V9+V10+V11+V12+V13+V14+V15+V16+V17+V18+V19+V20+V21+V22, data=PCA_12031) ) 
+
+summary( lm(aspree$LDL ~ raw2$rs56156922_C + A1_g$AgeAtRand + factor(A1_g$Gender) +factor(Statin_Use$V2)+V3+V4+V5+V6+V7+V8+V9+V10+V11+V12+V13+V14+V15+V16+V17+V18+V19+V20+V21+V22, data=PCA_12031) ) 
+
+summary( lm(aspree$nonHDL ~ raw2$rs56156922_C + A1_g$AgeAtRand + factor(A1_g$Gender) +factor(Statin_Use$V2)+V3+V4+V5+V6+V7+V8+V9+V10+V11+V12+V13+V14+V15+V16+V17+V18+V19+V20+V21+V22, data=PCA_12031) ) 
+
+############################################################
+
+SNP = raw1$rs9939224_T + raw2$rs56156922_C 
+
+summary(coxph(Surv(DSR, Ic) ~ SNP +A1_g$AgeAtRand + factor(A1_g$Gender) +factor(Statin_Use$V2) +V3+V4+V5+V6+V7+V8+V9+V10+V11+V12+V13+V14+V15+V16+V17+V18+V19+V20+V21+V22, data=PCA_12031) )  
+
+summary(coxph(Surv(DSR, Ic) ~ factor(SNP) +A1_g$AgeAtRand + factor(A1_g$Gender) +factor(Statin_Use$V2) +V3+V4+V5+V6+V7+V8+V9+V10+V11+V12+V13+V14+V15+V16+V17+V18+V19+V20+V21+V22, data=PCA_12031) )  
+
+############################################################
+

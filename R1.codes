@@ -1,0 +1,38 @@
+
+library(qqman)
+
+GWAS_ASPREE.PHENO1.glm.linear.MPLOT = read.table("GWAS_ASPREE.PHENO1.glm.linear.MPLOT")
+GWAS_ASPREE.PHENO2.glm.linear.MPLOT = read.table("GWAS_ASPREE.PHENO2.glm.linear.MPLOT")
+
+GWAS_ASPREE.PHENO3.glm.linear.MPLOT = read.table("GWAS_ASPREE.PHENO3.glm.linear.MPLOT")
+GWAS_ASPREE.PHENO4.glm.linear.MPLOT = read.table("GWAS_ASPREE.PHENO4.glm.linear.MPLOT")
+GWAS_ASPREE.PHENO5.glm.linear.MPLOT = read.table("GWAS_ASPREE.PHENO5.glm.linear.MPLOT")
+
+
+png("FigS4.png", width=1000, height=1000)
+
+par(mfrow=c(2,1))
+
+manhattan(GWAS_ASPREE.PHENO1.glm.linear.MPLOT, chr="V1", bp="V2", snp="V3", p="V4", suggestiveline=FALSE, main="SCORE2-OP (Model 1)", ylim=c(0,10), cex.main=2, cex = 1, cex.axis = 0.8, col = c("blue4", "orange3") )
+
+manhattan(GWAS_ASPREE.PHENO2.glm.linear.MPLOT, chr="V1", bp="V2", snp="V3", p="V4", suggestiveline=FALSE, main="SCORE2-OP (Model 2)", ylim=c(0,10), cex.main=2, cex = 1, cex.axis = 0.8, col = c("blue4", "orange3")   )
+
+dev.off()
+
+
+
+png("Fig3.png", width=1000, height=1500)
+
+par(mfrow=c(3,1))
+
+manhattan(GWAS_ASPREE.PHENO3.glm.linear.MPLOT, chr="V1", bp="V2", snp="V3", p="V4", suggestiveline=FALSE, main="SCORE2-OP-Lipid (Model 1)", ylim=c(0,10), cex.main=2, cex = 1, cex.axis = 0.8, col = c("blue4", "orange3")   )
+
+manhattan(GWAS_ASPREE.PHENO4.glm.linear.MPLOT, chr="V1", bp="V2", snp="V3", p="V4", suggestiveline=FALSE, main="SCORE2-OP-Lipid (Model 2)", ylim=c(0,10), cex.main=2, cex = 1, cex.axis = 0.8, col = c("blue4", "orange3")   )
+
+manhattan(GWAS_ASPREE.PHENO5.glm.linear.MPLOT, chr="V1", bp="V2", snp="V3", p="V4", suggestiveline=FALSE, main="SCORE2-OP-Lipid (Model 3)", ylim=c(0,10), cex.main=2, cex = 1, cex.axis = 0.8, col = c("blue4", "orange3")   )
+
+dev.off()
+
+##################################################################################################################
+
+

@@ -1,0 +1,19 @@
+
+/home/cyuu0038/plink1.9 --bfile /scratch/cyuu0038-processing/PLINK/ASPREE_topmed_imputed_MSID_Qcd_data_v1 \
+--maf 0.01 --hwe 0.000001 --keep ASPREE_Caucasian_Unrelated_70.id --chr 1-22 \
+--threads 16 --make-bed --out ASPREE_QC_autosome
+
+/home/cyuu0038/plink2 --bfile ASPREE_QC_autosome --freq --threads 4 --out ASPREE_QC_autosome.plink2
+
+/home/cyuu0038/plink2 --bfile ../PLINK_ASPREE/ASPREE_QC_autosome_SNP --threads 8 --linear omit-ref allow-no-covars --pheno ../Phenos_ASPREE/Phenos5_ASPREE.txt --out GWAS_ASPREE
+
+awk '{print $1,$2,$3,$12}' GWAS_ASPREE.PHENO1.glm.linear > GWAS_ASPREE.PHENO1.glm.linear.MPLOT
+awk '{print $1,$2,$3,$12}' GWAS_ASPREE.PHENO2.glm.linear > GWAS_ASPREE.PHENO2.glm.linear.MPLOT
+awk '{print $1,$2,$3,$12}' GWAS_ASPREE.PHENO3.glm.linear > GWAS_ASPREE.PHENO3.glm.linear.MPLOT
+awk '{print $1,$2,$3,$12}' GWAS_ASPREE.PHENO4.glm.linear > GWAS_ASPREE.PHENO4.glm.linear.MPLOT
+awk '{print $1,$2,$3,$12}' GWAS_ASPREE.PHENO5.glm.linear > GWAS_ASPREE.PHENO5.glm.linear.MPLOT
+
+
+/home/cyuu0038/plink1.9 --bfile /scratch/cyuu0038-processing/controls_onlyGWAS/PLINK_ASPREE/ASPREE_QC_autosome_SNP --snp rs9939224 --recodeA --out rs9939224_ACTG 
+/home/cyuu0038/plink1.9 --bfile /scratch/cyuu0038-processing/controls_onlyGWAS/PLINK_ASPREE/ASPREE_QC_autosome_SNP --snp rs56156922 --recodeA --out rs56156922_ACTG 
+
